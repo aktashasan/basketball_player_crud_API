@@ -11,9 +11,9 @@ public class PlayerBuilder {
     private PlayerDTO playerDTO = new PlayerDTO();
 
     public PlayerBuilder buildSomeDummy(){
-        this.playerDTO.setFirstName("hasan");
+        /*this.playerDTO.setFirstName("hasan");
         this.playerDTO.setLastName("aktas");
-        this.playerDTO.setPosition(Position.SHOOTING_GUARD);
+        this.playerDTO.setPosition(Position.SHOOTING_GUARD);*/
         return this;
     }
 

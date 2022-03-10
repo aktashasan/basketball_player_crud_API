@@ -22,7 +22,7 @@ class PlayerServiceTest {
     private PlayerRepository playerRepository;
 
     @Test
-    void addPlayer() {
+    void addPlayer() throws Exception {
         PlayerDTO playerDTO = new PlayerBuilder()
                 .buildSomeDummy()
                 .withFirstName("hasan")
@@ -36,10 +36,13 @@ class PlayerServiceTest {
     }
 
     @Test
-    void findPlayerById() {
+    void findPlayerById() throws Exception {
         playerRepository.deleteAll();
         PlayerDTO playerDTO = new PlayerBuilder()
                 .buildSomeDummy()
+                .withFirstName("hasan")
+                .withLastName("aktas")
+                .withPosition(Position.CENTER)
                 .build();
         PlayerDTO savedPlayer = playerService.addPlayer(playerDTO);
         PlayerDTO findPlayer = playerService.findPlayerById(savedPlayer.getId());
@@ -48,10 +51,13 @@ class PlayerServiceTest {
     }
 
     @Test
-    void deletePlayerById() {
+    void deletePlayerById() throws Exception {
         playerRepository.deleteAll();
         PlayerDTO playerDTO = new PlayerBuilder()
                 .buildSomeDummy()
+                .withFirstName("hasan")
+                .withLastName("aktas")
+                .withPosition(Position.CENTER)
                 .build();
         PlayerDTO savedPlayer = playerService.addPlayer(playerDTO);
         Boolean deletedPlayer = playerService.deletePlayerById(savedPlayer.getId());
@@ -59,10 +65,13 @@ class PlayerServiceTest {
     }
 
     @Test
-    void findAllPlayer() {
+    void findAllPlayer() throws Exception {
         playerRepository.deleteAll();
         PlayerDTO playerDTO = new PlayerBuilder()
                 .buildSomeDummy()
+                .withFirstName("hasan")
+                .withLastName("aktas")
+                .withPosition(Position.CENTER)
                 .build();
         playerService.addPlayer(playerDTO);
         playerService.addPlayer(playerDTO);

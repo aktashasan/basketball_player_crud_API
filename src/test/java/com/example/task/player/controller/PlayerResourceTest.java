@@ -2,6 +2,7 @@ package com.example.task.player.controller;
 
 import com.example.task.builder.PlayerBuilder;
 import com.example.task.player.model.PlayerDTO;
+import com.example.task.player.model.Position;
 import com.example.task.player.repository.PlayerRepository;
 import com.example.task.player.service.PlayerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,6 +46,9 @@ class PlayerResourceTest {
         playerRepository.deleteAll();
         PlayerDTO playerDTO = new PlayerBuilder()
                 .buildSomeDummy()
+                .withFirstName("hasan")
+                .withLastName("aktas")
+                .withPosition(Position.CENTER)
                 .build();
 
         String jsonPlayer = objectMapper.writeValueAsString(playerDTO);
@@ -66,6 +70,9 @@ class PlayerResourceTest {
     void deletePlayerById() throws Exception{
         PlayerDTO playerDTO = new PlayerBuilder()
                 .buildSomeDummy()
+                .withFirstName("hasan")
+                .withLastName("aktas")
+                .withPosition(Position.CENTER)
                 .build();
         PlayerDTO savedPlayer = playerService.addPlayer(playerDTO);
 
@@ -85,6 +92,9 @@ class PlayerResourceTest {
         playerRepository.deleteAll();
         PlayerDTO playerDTO = new PlayerBuilder()
                 .buildSomeDummy()
+                .withFirstName("hasan")
+                .withLastName("aktas")
+                .withPosition(Position.CENTER)
                 .build();
         PlayerDTO savedPlayer = playerService.addPlayer(playerDTO);
 
