@@ -24,25 +24,50 @@ Proje dizinine gidin
   
 ## API Kullanımı
 
-#### Tüm öğeleri getir
+Api ayağa kalktığında database'e eklenecek pozisyonları kaydedecektir. Request atarken listede yollanıcalacak oyuncu mevkii bilgisi aşağıdakiler gibi gönderilmelidir.
+
+* POINT_GUARD
+* SHOOTING_GUARD
+* SMALL_FORWARD
+* POWER_FORWARD 
+* CENTER
+
+#### Öğeyi kaydet
 
 ```http
   Post /app/player/save
 ```
 
-| Parametre | Tip     | Açıklama                |
-| :-------- | :------- | :------------------------- |
-| `playerDTo` | `object` | **Gerekli**. API anahtarınız. |
+| Parametre | Tip      | Açıklama                |
+| :-------- |:---------| :------------------------- |
+| `firstName` | `String` | **Gerekli**. API anahtarınız. |
+| `lastName` | `String` | **Gerekli**. API anahtarınız. |
+| `positionList` | `List`   | **Gerekli**. API anahtarınız. |
 
-#### Öğeyi getir
+
+```json
+  {
+  "firstName": "hasan",
+  "lastName": "aktas",
+  "positionList":[
+    {
+      "position":"CENTER"
+    }
+  ]
+}
+```
+
+#### Öğeyi sil
 
 ```http
   GET /app/player/delete/${id}
 ```
 
-| Parametre | Tip     | Açıklama                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **id**. Çağrılacak öğeyi siler. |
+| Parametre | Tip    | Açıklama                       |
+| :-------- |:-------| :-------------------------------- |
+| `id`      | `Long` | **id**. Çağrılacak öğeyi siler. |
+
+#### Tüm öğeleri getir
 
 ```http
   GET /app/players/get
