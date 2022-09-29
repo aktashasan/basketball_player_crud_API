@@ -26,7 +26,7 @@ public class PlayerBuilder {
         return this;
     }
     public PlayerBuilder withPosition(EPosition EPosition){
-        this.playerDTO.setEPosition(EPosition);
+//        this.playerDTO.setEPosition(EPosition);
         return this;
     }
 
