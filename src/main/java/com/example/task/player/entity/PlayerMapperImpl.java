@@ -1,13 +1,15 @@
-package com.example.task.player.model;
+package com.example.task.player.entity;
 
 
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+
 @Component
 public class PlayerMapperImpl implements Serializable {
 
-    public static PlayerDTO toDTO(Player player){
+    public static PlayerDTO toDTO(Player player) {
+
         if (player == null) {
             return null;
         }
@@ -16,12 +18,13 @@ public class PlayerMapperImpl implements Serializable {
         playerDTO.setId(player.getId());
         playerDTO.setFirstName(player.getFirstName());
         playerDTO.setLastName(player.getLastName());
-        playerDTO.setPosition(player.getPosition());
+        playerDTO.setPositionList(player.getPositionList());
 
         return playerDTO;
     }
 
-    public static Player toEntity(PlayerDTO playerDTO){
+    public static Player toEntity(PlayerDTO playerDTO) {
+
         if (playerDTO == null) {
             return null;
         }
@@ -31,7 +34,7 @@ public class PlayerMapperImpl implements Serializable {
         player.setId(playerDTO.getId());
         player.setFirstName(playerDTO.getFirstName());
         player.setLastName(playerDTO.getLastName());
-        player.setPosition(playerDTO.getPosition());
+        player.setPositionList(playerDTO.getPositionList());
 
         return player;
     }

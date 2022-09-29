@@ -1,8 +1,6 @@
 package com.example.task.player.service;
 
-import com.example.task.player.model.Player;
-import com.example.task.player.model.PlayerDTO;
-import com.example.task.player.model.PlayerMapperImpl;
+import com.example.task.player.entity.*;
 import com.example.task.player.repository.PlayerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +17,11 @@ public class PlayerService {
     @Autowired
     private final PlayerRepository playerRepository;
 
+    @Autowired
+    private final PositionService positionService;
+
     public PlayerDTO addPlayer(PlayerDTO playerDTO) throws Exception{
-        if (playerDTO.getFirstName() == null && playerDTO.getLastName() == null && playerDTO.getPosition() == null) {
+        if (playerDTO.getFirstName() == null && playerDTO.getLastName() == null ) {
             throw  new Exception("Tüm alanlar Boş olamaz!");
         }
         else if (playerDTO.getFirstName() == null) {
@@ -29,9 +30,24 @@ public class PlayerService {
         else if(playerDTO.getLastName() == null){
             throw new Exception("Soyadı alanı boş olamaz!");
         }
-        else if(playerDTO.getPosition() == null){
-            throw new Exception("Pozisyon alanı boş olamaz!");
+        List<Position> positionListToSave = new ArrayList<>();
+
+        List<Position> positionList = playerDTO.getPositionList();
+        if (positionList != null && !positionList.isEmpty()) {
+            for (Position item : positionList) {
+                Position position = positionService.findTopByName(item.getPosition());
+                if (position == null) {
+                    positionService.savePosition(item);
+                    positionListToSave.add(item);
+                } else if (position.getPosition() != null) {
+                    positionListToSave.add(position);
+                }
+            }
         }
+        if (positionListToSave != null && !positionListToSave.isEmpty()) {
+            playerDTO.setPositionList(positionListToSave);
+        }
+
         Player player = playerRepository.save(PlayerMapperImpl.toEntity(playerDTO));
         return PlayerMapperImpl.toDTO(player);
     }

@@ -1,14 +1,18 @@
-package com.example.task.player.model;
+package com.example.task.player.entity;
 
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 public class PlayerDTO implements Serializable {
 
     private Long id;
+
     private String firstName;
+
     private String lastName;
-    private Position position;
+
+    private List<Position> positionList;
 }

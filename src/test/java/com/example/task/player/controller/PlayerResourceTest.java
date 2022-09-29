@@ -1,8 +1,8 @@
 package com.example.task.player.controller;
 
 import com.example.task.builder.PlayerBuilder;
-import com.example.task.player.model.PlayerDTO;
-import com.example.task.player.model.Position;
+import com.example.task.player.entity.PlayerDTO;
+import com.example.task.player.entity.EPosition;
 import com.example.task.player.repository.PlayerRepository;
 import com.example.task.player.service.PlayerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -48,7 +48,7 @@ class PlayerResourceTest {
                 .buildSomeDummy()
                 .withFirstName("hasan")
                 .withLastName("aktas")
-                .withPosition(Position.CENTER)
+                .withPosition(EPosition.CENTER)
                 .build();
 
         String jsonPlayer = objectMapper.writeValueAsString(playerDTO);
@@ -72,7 +72,7 @@ class PlayerResourceTest {
                 .buildSomeDummy()
                 .withFirstName("hasan")
                 .withLastName("aktas")
-                .withPosition(Position.CENTER)
+                .withPosition(EPosition.CENTER)
                 .build();
         PlayerDTO savedPlayer = playerService.addPlayer(playerDTO);
 
@@ -94,7 +94,7 @@ class PlayerResourceTest {
                 .buildSomeDummy()
                 .withFirstName("hasan")
                 .withLastName("aktas")
-                .withPosition(Position.CENTER)
+                .withPosition(EPosition.CENTER)
                 .build();
         PlayerDTO savedPlayer = playerService.addPlayer(playerDTO);
 

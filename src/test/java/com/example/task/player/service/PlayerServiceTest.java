@@ -1,8 +1,8 @@
 package com.example.task.player.service;
 
 import com.example.task.builder.PlayerBuilder;
-import com.example.task.player.model.PlayerDTO;
-import com.example.task.player.model.Position;
+import com.example.task.player.entity.PlayerDTO;
+import com.example.task.player.entity.EPosition;
 import com.example.task.player.repository.PlayerRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ class PlayerServiceTest {
                 .buildSomeDummy()
                 .withFirstName("hasan")
                 .withLastName("aktas")
-                .withPosition(Position.CENTER)
+                .withPosition(EPosition.CENTER)
                 .build();
         PlayerDTO savedPlayer = playerService.addPlayer(playerDTO);
         System.out.println(savedPlayer);
@@ -42,7 +42,7 @@ class PlayerServiceTest {
                 .buildSomeDummy()
                 .withFirstName("hasan")
                 .withLastName("aktas")
-                .withPosition(Position.CENTER)
+                .withPosition(EPosition.CENTER)
                 .build();
         PlayerDTO savedPlayer = playerService.addPlayer(playerDTO);
         PlayerDTO findPlayer = playerService.findPlayerById(savedPlayer.getId());
@@ -57,7 +57,7 @@ class PlayerServiceTest {
                 .buildSomeDummy()
                 .withFirstName("hasan")
                 .withLastName("aktas")
-                .withPosition(Position.CENTER)
+                .withPosition(EPosition.CENTER)
                 .build();
         PlayerDTO savedPlayer = playerService.addPlayer(playerDTO);
         Boolean deletedPlayer = playerService.deletePlayerById(savedPlayer.getId());
@@ -71,7 +71,7 @@ class PlayerServiceTest {
                 .buildSomeDummy()
                 .withFirstName("hasan")
                 .withLastName("aktas")
-                .withPosition(Position.CENTER)
+                .withPosition(EPosition.CENTER)
                 .build();
         playerService.addPlayer(playerDTO);
         playerService.addPlayer(playerDTO);
